@@ -1681,11 +1681,11 @@ private
           # Get rid of part headers
           parts = parts.map{ |part|
             sections = part.split("\r\n\r\n");
-            sections.slice(1, sections.length).join("\r\n\r\n")
+            sections.slice(1, sections.length).join()
           }
 
           # Return all parts as one long string, like we were used to.
-          parts = parts.join("\r\n")
+          parts = parts.join().chomp("\r\n")
 
           path = "#{target_dir}#{uri}"
           parentdir = File.dirname path
